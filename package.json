@@ -1,0 +1,30 @@
+{
+  "name": "railson",
+  "version": "1.0.0",
+  "description": "A JSON layer for simple, typesafe, result-based serialisers/deserialisers",
+  "main": "build/index.js",
+  "scripts": {
+    "compile:watch": "rescript build -w",
+    "build:watch": "run-p compile:watch",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/chris-armstrong/railson.git"
+  },
+  "keywords": [
+    "rescript",
+    "json"
+  ],
+  "author": "Chris Armstrong",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/chris-armstrong/railson/issues"
+  },
+  "homepage": "https://github.com/chris-armstrong/railson#readme",
+  "devDependencies": {
+    "esbuild": "^0.12.24",
+    "npm-run-all": "^4.1.5",
+    "rescript": "^9.1.4"
+  }
+}
