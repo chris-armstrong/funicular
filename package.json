@@ -4,9 +4,8 @@
   "description": "A JSON layer for simple, typesafe, result-based serialisers/deserialisers",
   "main": "build/index.js",
   "scripts": {
-    "compile:watch": "rescript build -w",
-    "build:watch": "run-p compile:watch",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "build:watch": "rescript build -w",
+    "build": "rescript build"
   },
   "repository": {
     "type": "git",
@@ -23,8 +22,6 @@
   },
   "homepage": "https://github.com/chris-armstrong/railson#readme",
   "devDependencies": {
-    "esbuild": "^0.12.24",
-    "npm-run-all": "^4.1.5",
     "rescript": "^9.1.4"
   }
 }
