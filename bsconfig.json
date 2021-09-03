@@ -1,7 +1,13 @@
 {
-  "sources": { "dir": "src"},
+  "sources": [{ "dir": "src"}, {"dir": "test", "type": "dev"}],
+  "suffix": ".mjs",
+  "bs-dev-dependencies": [
+    "@dusty-phillips/rescript-zora"
+  ],
   "package-specs": {
-    "module": "es6-global"
+    "module": "es6",
+    "in-source": true
   },
-  "name" : "railson"
+  "name" : "railson",
+  "namespace": true
 }

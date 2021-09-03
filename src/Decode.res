@@ -1,4 +1,4 @@
-open Js.Json;
+open Js.Json
 
 let map_result = Belt.Result.map
 let flatMap_result = Belt.Result.flatMap
@@ -24,17 +24,19 @@ type jsonParseError =
 type jsonParseResult<'a> = Belt.Result.t<'a, jsonParseError>
 type jsonTreeResult = Belt.Result.t<jsonTreeRef, jsonParseError>
 type parser<'a> = jsonTreeResult => jsonParseResult<'a>
-type recordParser<'a> = (string, jsonTreeResult) => jsonParseResult<'a>;
+type recordParser<'a> = (string, jsonTreeResult) => jsonParseResult<'a>
 
-/** Helper to convert Option to Result */
+/* * Helper to convert Option to Result */
 let mapOptionWithError = (~mapper: 'a => 'b, opt, error): jsonParseResult<'b> =>
   Belt.Option.mapWithDefault(opt, Error(error), x => Ok(mapper(x)))
 
-/** Helper to convert Option to Result */
-let flatMapOptionWithError = (~mapper: 'a => jsonParseResult<'b>, opt, error): jsonParseResult<'b> =>
+/* * Helper to convert Option to Result */
+let flatMapOptionWithError = (~mapper: 'a => jsonParseResult<'b>, opt, error): jsonParseResult<
+  'b,
+> =>
   switch opt {
-    | Some(value) => mapper(value)
-    | None => Error(error)
+  | Some(value) => mapper(value)
+  | None => Error(error)
   }
 
 let jsonParseErrorToString = error =>
@@ -55,7 +57,6 @@ let parse = (jsonString, rootParser) => {
   flatMap_result(treeResult, tree => rootParser(Ok({tree: tree, path: "$"})))
 }
 
-
 let object_ = (x: jsonTreeResult) =>
   x
   ->map_result(({tree, path}) => (decodeObject(tree), path))
@@ -66,7 +67,9 @@ let object_ = (x: jsonTreeResult) =>
     })
   )
 
-let record = (recordObject: jsonTreeResult, recordParser: recordParser<'a>): jsonParseResult<array<'a>> =>
+let record = (recordObject: jsonTreeResult, recordParser: recordParser<'a>): jsonParseResult<
+  array<'a>,
+> =>
   recordObject
   ->object_
   ->map_result(({object, path}) => (Js.Dict.entries(object), path))
@@ -132,15 +135,19 @@ let array = (arrayRef: jsonTreeResult, itemParser: parser<'a>): jsonParseResult<
         flatMap_result(progress, items => {
           let record = itemParser(Ok({path: `${path}.${Belt.Int.toString(i)}`, tree: next}))
           switch record {
-            | Ok(recordValue) => Ok(Belt.Array.concat(items, [recordValue]))
-            | Error(error) => Error(error)
+          | Ok(recordValue) => Ok(Belt.Array.concat(items, [recordValue]))
+          | Error(error) => Error(error)
           }
         })
       )
     )
   )
 
-let field = (objectRef: jsonParseResult<jsonObjectRef>, fieldName: string, parser: parser<'a>): jsonParseResult<'a> =>
+let field = (
+  objectRef: jsonParseResult<jsonObjectRef>,
+  fieldName: string,
+  parser: parser<'a>,
+): jsonParseResult<'a> =>
   objectRef
   ->map_result(({object, path}) => (Js.Dict.get(object, fieldName), path))
   ->flatMap_result(((fieldValueOption, path)) =>
@@ -152,7 +159,7 @@ let field = (objectRef: jsonParseResult<jsonObjectRef>, fieldName: string, parse
   )
   ->parser
 
-let optional = (decodedResult: jsonTreeResult, mapper: parser<'a>): jsonParseResult<option<'a>> =>
+let optional = (mapper: parser<'a>, decodedResult: jsonTreeResult): jsonParseResult<option<'a>> =>
   switch decodedResult {
   | Ok(value) =>
     switch mapper(Ok(value)) {
@@ -167,3 +174,10 @@ let optional = (decodedResult: jsonTreeResult, mapper: parser<'a>): jsonParseRes
   }
 
 let any = x => x->map_result(({tree}) => tree)
+
+let v = (mapped: result<'a => 'b, 'c>, res: result<'a, 'c>): result<
+  'b,
+  'c,
+> => Belt.Result.flatMap(mapped, apply => Belt.Result.map(res, apply))
+
+let rmap = mapper => Ok(mapper)

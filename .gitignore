@@ -1,3 +1,6 @@
 node_modules
 lib/
 build/
+src/**/*.mjs
+test/**/*.mjs
+.merlin

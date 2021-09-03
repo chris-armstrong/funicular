@@ -5,7 +5,9 @@
   "main": "build/index.js",
   "scripts": {
     "build:watch": "rescript build -w",
-    "build": "rescript build"
+    "build": "rescript build",
+    "test:watch": "onchange --initial '{test,src}/*.mjs' -- pta 'test/*.test.mjs'",
+    "test": "pta 'test/*.test.mjs'"
   },
   "repository": {
     "type": "git",
@@ -22,6 +24,9 @@
   },
   "homepage": "https://github.com/chris-armstrong/railson#readme",
   "devDependencies": {
+    "@dusty-phillips/rescript-zora": "^2.0.0",
+    "onchange": "^7.1.0",
+    "pta": "^1.0.0",
     "rescript": "^9.1.4"
   }
 }

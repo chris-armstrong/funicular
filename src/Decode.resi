@@ -42,7 +42,10 @@ let array: (jsonTreeResult, parser<'a>) => jsonParseResult<array<'a>>
 
 let field: (jsonParseResult<jsonObjectRef>, string, parser<'a>) => jsonParseResult<'a>
 
-let optional: (jsonTreeResult, parser<'a>) => jsonParseResult<option<'a>>
+let optional: (parser<'a>, jsonTreeResult) => jsonParseResult<option<'a>>
 
 let any: (jsonTreeResult) => jsonParseResult<Js.Json.t>
 
+let rmap: 'a => result<'a, jsonParseError>
+
+let v: (result<'a => 'b, 'c>, result<'a, 'c>) => result<'b, 'c>
