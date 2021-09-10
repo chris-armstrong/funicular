@@ -34,12 +34,14 @@ let decodeCustomer = json => {
   ->v(points)
 }
 
-let encodeCustomer = value => {
+let encodeCustomer = ({firstName, lastName, email, phone, points}) => {
   open Encode
   object_([
-    ("firstName", string(value.firstName)),
-    ("lastName", string(value.lastName)),
-    ("email", string(value.email)),
+    ("firstName", firstName->string),
+    ("lastName", lastName->string),
+    ("email", email->string),
+    ("phone", phone->optional(string)),
+    ("points", points->integer),
   ])
 }
 
@@ -58,4 +60,3 @@ let encodeCustomerRequest = value => {
     ("matchOnEmail", boolean(value.matchOnEmail)),
   ])
 }
-

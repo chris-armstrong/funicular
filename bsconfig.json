@@ -8,6 +8,6 @@
     "module": "es6",
     "in-source": true
   },
-  "name" : "railson",
+  "name" : "funicular",
   "namespace": true
 }

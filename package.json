@@ -1,7 +1,7 @@
 {
-  "name": "railson",
+  "name": "funicular",
   "version": "1.0.0",
-  "description": "A JSON layer for simple, typesafe, result-based serialisers/deserialisers",
+  "description": "composable JSON parsing for ReScript",
   "main": "build/index.js",
   "scripts": {
     "build:watch": "rescript build -w",
@@ -11,7 +11,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+ssh://git@github.com/chris-armstrong/railson.git"
+    "url": "git+ssh://git@github.com/chris-armstrong/funicular.git"
   },
   "keywords": [
     "rescript",
@@ -20,9 +20,9 @@
   "author": "Chris Armstrong",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/chris-armstrong/railson/issues"
+    "url": "https://github.com/chris-armstrong/funicular/issues"
   },
-  "homepage": "https://github.com/chris-armstrong/railson#readme",
+  "homepage": "https://github.com/chris-armstrong/funicular#readme",
   "devDependencies": {
     "@dusty-phillips/rescript-zora": "^2.0.0",
     "onchange": "^7.1.0",
