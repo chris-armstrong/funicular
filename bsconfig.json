@@ -8,6 +8,6 @@
     "module": "es6",
     "in-source": true
   },
-  "name" : "funicular",
-  "namespace": true
+  "name" : "rescript-funicular",
+  "namespace": "funicular"
 }
