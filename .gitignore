@@ -4,3 +4,4 @@ build/
 src/**/*.mjs
 test/**/*.mjs
 .merlin
+.bsb.lock
