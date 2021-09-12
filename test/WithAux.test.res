@@ -48,7 +48,7 @@ let encodeCustomer = val => {
   object_([
     ("customerNo", integer(val.customerNo)),
     ("name", string(val.name)),
-    ("orders", array(Belt.Array.map(val.orders, encodeOrder))),
+    ("orders", array(val.orders, encodeOrder)),
   ])
 }
 
