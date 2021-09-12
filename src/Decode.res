@@ -155,3 +155,86 @@ let v = (mapped: result<'a => 'b, 'c>, res: result<'a, 'c>): result<'b, 'c> =>
   Belt.Result.flatMap(mapped, apply => Belt.Result.map(res, apply))
 
 let rmap = mapper => Ok(mapper)
+
+let map = (res, mapper) => Belt.Result.map(res, mapper)
+let map2 = (res1, res2, mapper) => switch ((res1, res2)) {
+  | (Ok(res1), Ok(res2)) => Ok(mapper(res1, res2))
+  | (Error(error1), _) => Error(error1)
+  | (_, Error(error2)) => Error(error2)
+}
+let map3 = (res1, res2, res3, mapper) => switch ((res1, res2, res3)) {
+  | (Ok(res1), Ok(res2), Ok(res3)) => Ok(mapper(res1, res2, res3))
+  | (Error(error), _, _) => Error(error)
+  | (_, Error(error), _) => Error(error)
+  | (_, _, Error(error)) => Error(error)
+}
+let map4 = (res1, res2, res3, res4, mapper) => switch ((res1, res2, res3, res4)) {
+  | (Ok(res1), Ok(res2), Ok(res3), Ok(res4)) => Ok(mapper(res1, res2, res3, res4))
+  | (Error(error), _, _, _) => Error(error)
+  | (_, Error(error), _, _) => Error(error)
+  | (_, _, Error(error), _) => Error(error)
+  | (_, _, _, Error(error)) => Error(error)
+}
+let map5 = (res1, res2, res3, res4, res5, mapper) => switch ((res1, res2, res3, res4, res5)) {
+  | (Ok(res1), Ok(res2), Ok(res3), Ok(res4), Ok(res5)) => Ok(mapper(res1, res2, res3, res4, res5))
+  | (Error(error), _, _, _, _) => Error(error)
+  | (_, Error(error), _, _, _) => Error(error)
+  | (_, _, Error(error), _, _) => Error(error)
+  | (_, _, _, Error(error), _) => Error(error)
+  | (_, _, _, _, Error(error)) => Error(error)
+}
+let map6 = (res1, res2, res3, res4, res5, res6, mapper) => switch ((res1, res2, res3, res4, res5, res6)) {
+  | (Ok(res1), Ok(res2), Ok(res3), Ok(res4), Ok(res5), Ok(res6)) => Ok(mapper(res1, res2, res3, res4, res5, res6))
+  | (Error(error), _, _, _, _, _) => Error(error)
+  | (_, Error(error), _, _, _, _) => Error(error)
+  | (_, _, Error(error), _, _, _) => Error(error)
+  | (_, _, _, Error(error), _, _) => Error(error)
+  | (_, _, _, _, Error(error), _) => Error(error)
+  | (_, _, _, _, _, Error(error)) => Error(error)
+}
+let map7 = (res1, res2, res3, res4, res5, res6, res7, mapper) => switch ((res1, res2, res3, res4, res5, res6, res7)) {
+  | (Ok(res1), Ok(res2), Ok(res3), Ok(res4), Ok(res5), Ok(res6), Ok(res7)) => Ok(mapper(res1, res2, res3, res4, res5, res6, res7))
+  | (Error(error), _, _, _, _, _, _) => Error(error)
+  | (_, Error(error), _, _, _, _, _) => Error(error)
+  | (_, _, Error(error), _, _, _, _) => Error(error)
+  | (_, _, _, Error(error), _, _, _) => Error(error)
+  | (_, _, _, _, Error(error), _, _) => Error(error)
+  | (_, _, _, _, _, Error(error), _) => Error(error)
+  | (_, _, _, _, _, _, Error(error)) => Error(error)
+}
+let map8 = (res1, res2, res3, res4, res5, res6, res7, res8, mapper) => switch ((res1, res2, res3, res4, res5, res6, res7, res8)) {
+  | (Ok(res1), Ok(res2), Ok(res3), Ok(res4), Ok(res5), Ok(res6), Ok(res7), Ok(res8)) => Ok(mapper(res1, res2, res3, res4, res5, res6, res7, res8))
+  | (Error(error), _, _, _, _, _, _, _) => Error(error)
+  | (_, Error(error), _, _, _, _, _, _) => Error(error)
+  | (_, _, Error(error), _, _, _, _, _) => Error(error)
+  | (_, _, _, Error(error), _, _, _, _) => Error(error)
+  | (_, _, _, _, Error(error), _, _, _) => Error(error)
+  | (_, _, _, _, _, Error(error), _, _) => Error(error)
+  | (_, _, _, _, _, _, Error(error), _) => Error(error)
+  | (_, _, _, _, _, _, _, Error(error)) => Error(error)
+}
+let map9 = (res1, res2, res3, res4, res5, res6, res7, res8, res9, mapper) => switch ((res1, res2, res3, res4, res5, res6, res7, res8, res9)) {
+  | (Ok(res1), Ok(res2), Ok(res3), Ok(res4), Ok(res5), Ok(res6), Ok(res7), Ok(res8), Ok(res9)) => Ok(mapper(res1, res2, res3, res4, res5, res6, res7, res8, res9))
+  | (Error(error), _, _, _, _, _, _, _, _) => Error(error)
+  | (_, Error(error), _, _, _, _, _, _, _) => Error(error)
+  | (_, _, Error(error), _, _, _, _, _, _) => Error(error)
+  | (_, _, _, Error(error), _, _, _, _, _) => Error(error)
+  | (_, _, _, _, Error(error), _, _, _, _) => Error(error)
+  | (_, _, _, _, _, Error(error), _, _, _) => Error(error)
+  | (_, _, _, _, _, _, Error(error), _, _) => Error(error)
+  | (_, _, _, _, _, _, _, Error(error), _) => Error(error)
+  | (_, _, _, _, _, _, _, _, Error(error)) => Error(error)
+}
+let map10 = (res1, res2, res3, res4, res5, res6, res7, res8, res9, res10, mapper) => switch ((res1, res2, res3, res4, res5, res6, res7, res8, res9, res10)) {
+  | (Ok(res1), Ok(res2), Ok(res3), Ok(res4), Ok(res5), Ok(res6), Ok(res7), Ok(res8), Ok(res9), Ok(res10)) => Ok(mapper(res1, res2, res3, res4, res5, res6, res7, res8, res9, res10))
+  | (Error(error), _, _, _, _, _, _, _, _, _) => Error(error)
+  | (_, Error(error), _, _, _, _, _, _, _, _) => Error(error)
+  | (_, _, Error(error), _, _, _, _, _, _, _) => Error(error)
+  | (_, _, _, Error(error), _, _, _, _, _, _) => Error(error)
+  | (_, _, _, _, Error(error), _, _, _, _, _) => Error(error)
+  | (_, _, _, _, _, Error(error), _, _, _, _) => Error(error)
+  | (_, _, _, _, _, _, Error(error), _, _, _) => Error(error)
+  | (_, _, _, _, _, _, _, Error(error), _, _) => Error(error)
+  | (_, _, _, _, _, _, _, _, Error(error), _) => Error(error)
+  | (_, _, _, _, _, _, _, _, _, Error(error)) => Error(error)
+}

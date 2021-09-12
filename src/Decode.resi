@@ -103,3 +103,14 @@ let rmap: 'a => jsonParseResult<'a, 'b>
 
 @ocaml.doc("Wrap a jsonParseResult and feed it into an rmap mapping function (see rmap() for an example)")
 let v: (result<'a => 'b, 'c>, jsonParseResult<'a, 'c>) => jsonParseResult<'b, 'c>
+
+let map: (jsonParseResult<'r1, 'err>, 'r1 => 'mapped) => result<'mapped, 'err>
+let map2: (result<'r1, 'err>, result<'r2, 'err>, ('r1, 'r2) => 'mapped) => result<'mapped, 'err>;
+let map3: (result<'r1, 'err>, result<'r2, 'err>, result<'r3, 'err>, ('r1, 'r2, 'r3) => 'mapped) => result<'mapped, 'err>;
+let map4: (result<'r1, 'err>, result<'r2, 'err>, result<'r3, 'err>, result<'r4, 'err>, ('r1, 'r2, 'r3, 'r4) => 'mapped) => result<'mapped, 'err>;
+let map5: (result<'r1, 'err>, result<'r2, 'err>, result<'r3, 'err>, result<'r4, 'err>, result<'r5, 'err>, ('r1, 'r2, 'r3, 'r4, 'r5) => 'mapped) => result<'mapped, 'err>;
+let map6: (result<'r1, 'err>, result<'r2, 'err>, result<'r3, 'err>, result<'r4, 'err>, result<'r5, 'err>, result<'r6, 'err>, ('r1, 'r2, 'r3, 'r4, 'r5, 'r6) => 'mapped) => result<'mapped, 'err>;
+let map7: (result<'r1, 'err>, result<'r2, 'err>, result<'r3, 'err>, result<'r4, 'err>, result<'r5, 'err>, result<'r6, 'err>, result<'r7, 'err>, ('r1, 'r2, 'r3, 'r4, 'r5, 'r6, 'r7) => 'mapped) => result<'mapped, 'err>;
+let map8: (result<'r1, 'err>, result<'r2, 'err>, result<'r3, 'err>, result<'r4, 'err>, result<'r5, 'err>, result<'r6, 'err>, result<'r7, 'err>, result<'r8, 'err>, ('r1, 'r2, 'r3, 'r4, 'r5, 'r6, 'r7, 'r8) => 'mapped) => result<'mapped, 'err>;
+let map9: (result<'r1, 'err>, result<'r2, 'err>, result<'r3, 'err>, result<'r4, 'err>, result<'r5, 'err>, result<'r6, 'err>, result<'r7, 'err>, result<'r8, 'err>, result<'r9, 'err>, ('r1, 'r2, 'r3, 'r4, 'r5, 'r6, 'r7, 'r8, 'r9) => 'mapped) => result<'mapped, 'err>;
+let map10: (result<'r1, 'err>, result<'r2, 'err>, result<'r3, 'err>, result<'r4, 'err>, result<'r5, 'err>, result<'r6, 'err>, result<'r7, 'err>, result<'r8, 'err>, result<'r9, 'err>, result<'r10, 'err>, ('r1, 'r2, 'r3, 'r4, 'r5, 'r6, 'r7, 'r8, 'r9, 'r10) => 'mapped) => result<'mapped, 'err>;
